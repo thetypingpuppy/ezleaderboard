@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="ezleaderboard"
+        version="1.0.0">
+
+  <name>ezleaderboard</name>
+
+  <description>
+    Simplest Google Play Services leaderboard interface for Cordova / Android.
+  </description>
+
+  <license>MIT</license>
+
+  <engines>
+    <engine name="cordova" version=">=3.0.0"/>
+  </engines>
+
+  <js-module src="www/ezleaderboard.js" name="ezleaderboard">
+    <clobbers target="window.plugins.ezleaderboard" />
+  </js-module>
+
+  <platform name="android">
+
+   <framework src="com.google.android.gms:play-services-auth:18.1.0" />
+  <framework src="com.google.android.gms:play-services-games:18.0.1" />
+
+    <preference name="PLAY_APP_ID" />
+    <preference name="PLAY_LEADERBOARD_ID" /> 
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="ezleaderboard">
+        <param name="android-package" value="com.orbost.plugins.ezleaderboard" />
+      </feature>
+    </config-file>
+
+    <config-file target="res/values/strings.xml" parent="/*">
+      <string name="ezleaderboard_app_id">$PLAY_APP_ID</string>
+      <string name="ezleaderboard_leaderboard_id">$PLAY_LEADERBOARD_ID</string>
+    </config-file>
+
+    <!-- need to write to manifest 
+        <meta-data android:name="com.google.android.gms.games.APP_ID"
+            android:value="@string/ezleaderboard_app_id" />
+
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+            
+            
+            AND
+
+
+            enable androidx and enablejetifier
+            -->
+
+    <source-file src="src/android/ezleaderboard.java" target-dir="src/com/orbost/plugins"/>
+  </platform>
+
+    <platform name="browser">
+    <js-module src="src/browser/ezleaderboard.js" name="ezleaderboardproxy">
+      <merges target="window.plugins.ezleaderboard" />
+    </js-module>
+  </platform>
+
+
+</plugin>
+
+

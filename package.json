@@ -1,0 +1,23 @@
+{
+  "name": "ezleaderboard",
+  "version": "1.0.0",
+  "description": "\r\n Simplest leaderboard for Cordova/Android.\r\n  ",
+  "cordova": {
+    "id": "ezleaderboard",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "",
+  "license": "MIT"
+}
