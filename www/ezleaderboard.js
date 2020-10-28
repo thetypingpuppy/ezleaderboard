@@ -1,25 +1,3 @@
-// function ezleaderboard() {
-// }
-
-// ezleaderboard.prototype.keepAwake = function (successCallback, errorCallback) {
-//   cordova.exec(successCallback, errorCallback, "ezleaderboard", "keepAwake", []);
-// };
-
-// ezleaderboard.prototype.allowSleepAgain = function (successCallback, errorCallback) {
-//   cordova.exec(successCallback, errorCallback, "ezleaderboard", "allowSleepAgain", []);
-// };
-
-// ezleaderboard.install = function () {
-//   if (!window.plugins) {
-//     window.plugins = {};
-//   }
-
-//   window.plugins.ezleaderboard = new ezleaderboard();
-//   return window.plugins.ezleaderboard;
-// };
-
-// cordova.addConstructor(ezleaderboard.install);
-
 class ezleaderboard {
     constructor(){
         this.user;
@@ -27,7 +5,6 @@ class ezleaderboard {
     }
 
     // -- iOS and Android
-    // args = [{ score: 10, leaderboardID: "champions_circle" }]
     submitToLeaderboard(successCallback, errorCallback, args){
         cordova.exec(successCallback, errorCallback, "ezleaderboard", "submitToLeaderboard", args);
     }
@@ -46,7 +23,6 @@ class ezleaderboard {
                       "ezleaderboard", "auth", []);
     }
 
-    //args = [{ leaderboardID: "champions_circle", showAchievements: "true" }]
     showLeaderboard(successCallback, errorCallback, args){
         cordova.exec(successCallback, errorCallback, "ezleaderboard", "showLeaderboard", args);
     }
