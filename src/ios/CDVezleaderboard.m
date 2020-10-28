@@ -190,7 +190,7 @@
 - (void) showLeaderboard:(CDVInvokedUrlCommand*)command;
 {
     NSMutableDictionary *args = [command.arguments objectAtIndex:0];
-    NSString *leaderboardId = [args objectForKey:@"leaderboardId"];
+    NSString *leaderboardId = [args objectForKey:@"leaderboardID"];
     NSString *showAchievements = [args objectForKey:@"showAchievements"];
 
     CDVPluginResult* pluginResult = nil;
