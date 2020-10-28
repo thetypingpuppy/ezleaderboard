@@ -6,6 +6,7 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.content.Context;
 
@@ -28,7 +29,17 @@ public class ezleaderboard extends CordovaPlugin {
         try {
             if (ACTION_SUBMIT_TO_LEADERBOARD.equals(action)) {
 
-                score = args.getInt(0);
+                // score = args.getInt(0);
+
+                JSONObject jsonObj = args.getJSONObject(0);
+                JSONArray keys = jsonObj.names ();
+
+                for (int i = 0; i < keys.length(); i++) {
+                    String key = keys.getString(i);
+                    if (key.equals("score")){
+                        score = Integer.parseInt(jsonObj.getString(key));
+                    }
+                }
 
                 Context context = this.cordova.getActivity().getApplicationContext();
                 GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN).requestEmail().build();
