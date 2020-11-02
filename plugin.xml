@@ -30,7 +30,7 @@
     <framework src="com.google.android.gms:play-services-games:18.0.1" />
 
     <preference name="PLAY_APP_ID" />
-    <preference name="PLAY_LEADERBOARD_ID" /> 
+    <!-- <preference name="PLAY_LEADERBOARD_ID" />  -->
 
     <config-file target="res/xml/config.xml" parent="/*">
         <feature name="ezleaderboard">
@@ -40,7 +40,7 @@
 
     <config-file target="res/values/strings.xml" parent="/*">
         <string name="ezleaderboard_app_id">$PLAY_APP_ID</string>
-        <string name="ezleaderboard_leaderboard_id">$PLAY_LEADERBOARD_ID</string>
+        <!-- <string name="ezleaderboard_leaderboard_id">$PLAY_LEADERBOARD_ID</string> -->
     </config-file>
 
 

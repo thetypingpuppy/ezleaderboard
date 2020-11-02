@@ -83,7 +83,7 @@
 {
     NSMutableDictionary *args = [command.arguments objectAtIndex:0];
     int64_t score = [[args objectForKey:@"score"] integerValue];
-    NSString *leaderboardId = [args objectForKey:@"leaderboardID"];
+    NSString *leaderboardId = [args objectForKey:@"leaderboardID_ios"];
 
     __block CDVPluginResult* pluginResult = nil;
 
@@ -190,7 +190,7 @@
 - (void) showLeaderboard:(CDVInvokedUrlCommand*)command;
 {
     NSMutableDictionary *args = [command.arguments objectAtIndex:0];
-    NSString *leaderboardId = [args objectForKey:@"leaderboardID"];
+    NSString *leaderboardId = [args objectForKey:@"leaderboardID_ios"];
     NSString *showAchievements = [args objectForKey:@"showAchievements"];
 
     CDVPluginResult* pluginResult = nil;

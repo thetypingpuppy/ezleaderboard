@@ -18,11 +18,11 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.orbost.bananareach.R;
 
 public class ezleaderboard extends CordovaPlugin {
     private static final String ACTION_SUBMIT_TO_LEADERBOARD = "submitToLeaderboard";
     public int score;
+    public String leaderboardID;
 
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
@@ -38,6 +38,10 @@ public class ezleaderboard extends CordovaPlugin {
                     String key = keys.getString(i);
                     if (key.equals("score")){
                         score = Integer.parseInt(jsonObj.getString(key));
+                    }
+
+                    if (key.equals("leaderboardID_droid")){
+                        leaderboardID = jsonObj.getString(key);
                     }
                 }
 
@@ -90,10 +94,10 @@ public class ezleaderboard extends CordovaPlugin {
         }
 
         assert account != null;
-        Games.getLeaderboardsClient(this.cordova.getActivity(), account).submitScore(this.cordova.getActivity().getString(R.string.ezleaderboard_leaderboard_id), score);
+        Games.getLeaderboardsClient(this.cordova.getActivity(), account).submitScore(leaderboardID, score);
 
         Games.getLeaderboardsClient(this.cordova.getActivity(), GoogleSignIn.getLastSignedInAccount(this.cordova.getActivity().getApplicationContext()))
-                .getLeaderboardIntent(this.cordova.getActivity().getString(R.string.ezleaderboard_leaderboard_id))
+                .getLeaderboardIntent(leaderboardID)
                 .addOnSuccessListener(new OnSuccessListener<Intent>() {
                     @Override
                     public void onSuccess(Intent intent) {
