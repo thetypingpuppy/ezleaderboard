@@ -16,9 +16,11 @@
     <engine name="cordova" version=">=3.0.0"/>
   </engines>
 
-  <js-module src="www/ezleaderboard.js" name="ezleaderboard">
+  <!-- <js-module src="www/ezleaderboard.js" name="ezleaderboard">
     <clobbers target="window.plugins.ezleaderboard" />
-  </js-module>
+  </js-module> -->
+
+  <asset src="www/ezleaderboard.js" target="plugins/ezleaderboard/ezleaderboard.js" />
 
   <platform name="android">
 
@@ -27,39 +29,46 @@
     <framework src="com.google.android.gms:play-services-auth:18.1.0" />
     <framework src="com.google.android.gms:play-services-games:18.0.1" />
 
-
     <preference name="PLAY_APP_ID" />
-    <preference name="PLAY_LEADERBOARD_ID" /> 
+    <!-- <preference name="PLAY_LEADERBOARD_ID" />  -->
 
     <config-file target="res/xml/config.xml" parent="/*">
-      <feature name="ezleaderboard">
-        <param name="android-package" value="com.orbost.plugins.ezleaderboard" />
-      </feature>
+        <feature name="ezleaderboard">
+          <param name="android-package" value="com.orbost.plugins.ezleaderboard" />
+        </feature>
     </config-file>
 
     <config-file target="res/values/strings.xml" parent="/*">
-      <string name="ezleaderboard_app_id">$PLAY_APP_ID</string>
-      <string name="ezleaderboard_leaderboard_id">$PLAY_LEADERBOARD_ID</string>
+        <string name="ezleaderboard_app_id">$PLAY_APP_ID</string>
+        <!-- <string name="ezleaderboard_leaderboard_id">$PLAY_LEADERBOARD_ID</string> -->
     </config-file>
 
 
     <config-file parent="/manifest/application" target="AndroidManifest.xml">
-            <meta-data android:name="com.google.android.gms.games.APP_ID"
-          android:value="@string/ezleaderboard_app_id" />
-      <meta-data android:name="com.google.android.gms.version"
-          android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="@string/ezleaderboard_app_id" />
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
     </config-file>
 
 
     <source-file src="src/android/ezleaderboard.java" target-dir="src/com/orbost/plugins"/>
   </platform>
 
-    <platform name="browser">
+  <platform name="browser">
     <js-module src="src/browser/ezleaderboard.js" name="ezleaderboardproxy">
       <merges target="window.plugins.ezleaderboard" />
     </js-module>
   </platform>
 
+  <platform name="ios">
+      <config-file target="config.xml" parent="/*">
+          <feature name="ezleaderboard">
+              <param name="ios-package" value="CDVezleaderboard" />
+          </feature>
+      </config-file>
+      <header-file src="src/ios/CDVezleaderboard.h" />
+      <source-file src="src/ios/CDVezleaderboard.m" />
+      <framework src="GameKit.framework" />
+  </platform>
 
 </plugin>
 
